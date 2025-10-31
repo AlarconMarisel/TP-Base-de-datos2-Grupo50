@@ -1,0 +1,16 @@
+CREATE DATABASE BD2_TPI_GRUPO_50
+COLLATE Latin1_General_CI_AI
+GO
+
+USE BD2_TPI_GRUPO_50
+GO
+
+CREATE TABLE Categorias (
+    IdCategoria INT PRIMARY KEY IDENTITY(1,1),
+    NombreCategoria VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE EstadosArticulo (
+    IdEstado INT PRIMARY KEY IDENTITY(1,1),
+    NombreEstado VARCHAR(50) NOT NULL
+);
