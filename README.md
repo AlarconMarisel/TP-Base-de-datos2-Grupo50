@@ -8,8 +8,8 @@ La principal característica del sistema es su mecanismo de reserva. Un comprado
 
 ### 🚀 Funcionalidades Principales:
 
- * 🏷️ **Gestión de Artículos: El administrador podrá publicar nuevos artículos, asignándoles un nombre, descripción, precio y categoría. También podrá modificar sus datos o eliminarlos del listado.
- * 👤 **Gestión de Usuarios: El sistema registrará a los potenciales compradores, almacenando sus datos básicos para gestionar las reservas y ventas.
- * ⏳ **Sistema de Reservas: Los usuarios podrán reservar un artículo. El sistema registrará la reserva, calculará el monto de la seña, y establecerá una fecha de vencimiento de 72 horas.
- * 💸 **Proceso de Venta: Permite concretar la venta de un artículo previamente reservado, registrando el pago final y cambiando el estado del artículo a "Vendido".
- * 📊 **Consultas y Reportes: Tanto el administrador como los usuarios (con distintos niveles de acceso) podrán consultar información clave, como el listado de artículos disponibles, el historial de ventas o las reservas activas.
+ * 🏷️ Gestión de Artículos: El administrador podrá publicar nuevos artículos, asignándoles un nombre, descripción, precio y categoría. También podrá modificar sus datos o eliminarlos del listado.
+ * 👤 Gestión de Usuarios: El sistema registrará a los potenciales compradores, almacenando sus datos básicos para gestionar las reservas y ventas.
+ * ⏳ Sistema de Reservas: Los usuarios podrán reservar un artículo. El sistema registrará la reserva, calculará el monto de la seña, y establecerá una fecha de vencimiento de 72 horas.
+ * 💸 Proceso de Venta: Permite concretar la venta de un artículo previamente reservado, registrando el pago final y cambiando el estado del artículo a "Vendido".
+ * 📊 Consultas y Reportes: Tanto el administrador como los usuarios (con distintos niveles de acceso) podrán consultar información clave, como el listado de artículos disponibles, el historial de ventas o las reservas activas.
