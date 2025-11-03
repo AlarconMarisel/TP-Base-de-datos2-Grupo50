@@ -44,3 +44,23 @@ WHERE R.EstadoReserva = 1
   AND R.FechaVencimientoReserva > GETDATE();
 GO
 
+/* ============================================================
+   VISTA: VW_HistorialVentas
+   ============================================================ */
+USE BD2_TPI_GRUPO_50
+GO
+
+CREATE VIEW VW_HistorialVentas as
+SELECT
+	v.IDVenta as 'Nº Venta',
+	v.FechaVenta as 'Fecha Venta',
+	u.Nombre +' '+ u.Apellido as 'Nombre y Apellido',
+	a.NombreArticulo as'Articulo',
+	c.NombreCategoria as 'Categoria',
+	v.PrecioFinal as 'Precio'
+FROM
+	Ventas v
+INNER JOIN Reservas r ON v.IDReserva=r.IDReserva
+INNER JOIN Usuarios u ON r.IDUsuario=u.IDUsuario
+INNER JOIN Articulos a ON r.IDArticulo=a.IdArticulo
+INNER JOIN Categorias c ON a.IdCategoria=c.IdCategoria
