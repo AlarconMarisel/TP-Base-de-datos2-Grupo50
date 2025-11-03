@@ -52,7 +52,7 @@ GO
 
 CREATE VIEW VW_HistorialVentas as
 SELECT
-	v.IDVenta as 'Nº Venta',
+	v.IDVenta as 'NÂº Venta',
 	v.FechaVenta as 'Fecha Venta',
 	u.Nombre +' '+ u.Apellido as 'Nombre y Apellido',
 	a.NombreArticulo as'Articulo',
@@ -64,3 +64,29 @@ INNER JOIN Reservas r ON v.IDReserva=r.IDReserva
 INNER JOIN Usuarios u ON r.IDUsuario=u.IDUsuario
 INNER JOIN Articulos a ON r.IDArticulo=a.IdArticulo
 INNER JOIN Categorias c ON a.IdCategoria=c.IdCategoria
+
+
+/* ============================================================
+   VISTA: VW_ArticulosDisponibles
+   ============================================================ */
+USE BD2_TPI_GRUPO_50
+GO
+
+CREATE OR ALTER VIEW VW_ArticulosDisponibles AS
+SELECT
+    A.NombreArticulo        AS Articulo,
+    C.NombreCategoria       AS Categoria,
+    A.Descripcion,
+    A.Precio,
+    I.RutaImagen            AS Foto,
+    E.NombreEstado          AS Estado
+FROM
+    dbo.Articulos AS A
+INNER JOIN
+    dbo.Categorias AS C ON A.IdCategoria = C.IdCategoria
+INNER JOIN
+    dbo.ImagenesArticulo AS I ON A.IdArticulo = I.IdArticulo
+INNER JOIN
+    dbo.EstadosArticulo AS E ON A.IdEstado = E.IdEstado
+WHERE
+    E.NombreEstado = 'Disponible';
