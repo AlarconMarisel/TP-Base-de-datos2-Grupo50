@@ -83,3 +83,50 @@ BEGIN
         ;THROW;
     END CATCH
 END
+
+/* ============================================================
+   STORED PROCEDURES: SP_ReporteDeVentasPorFechas
+   ============================================================ */
+USE BD2_TPI_GRUPO_50
+GO
+
+CREATE PROCEDURE SP_ReporteDeVentasPorFechas(
+	@FechaInicio DATE, 
+	@FechaFin DATE,
+	@TotalVentasPeriodo DECIMAL OUTPUT
+)
+AS 
+BEGIN
+
+ -- Validacion de Fechas 
+	IF @FechaInicio IS NULL OR @FechaFin IS NULL 
+	BEGIN
+	RAISERROR('NINGUNA DE LAS FECHAS PUEDE SER NULA.',16,1);
+	SET @TotalVentasPeriodo=0;
+	RETURN -1
+	END
+	
+	IF @FechaInicio='' OR @FechaFin=''
+	BEGIN
+	RAISERROR('SE NECESITA INGRESAR UN RANGO DE FECHAS.',16,1);
+	SET @TotalVentasPeriodo=0;
+	RETURN -1
+	END
+
+ -- Devolver el listado detallado de ventas para el rango de fechas especificado
+	SELECT * FROM VW_HistorialVentas 
+	WHERE [Fecha Venta] BETWEEN @FechaInicio AND @FechaFin
+	ORDER BY [Fecha Venta];
+
+ -- Calcular el total de las ventas del período solicitado y asignarlo al parámetro de salida
+	SELECT @TotalVentasPeriodo = SUM(Precio) 
+	FROM VW_HistorialVentas 
+	WHERE [Fecha Venta] BETWEEN @FechaInicio AND @FechaFin;
+ 
+ -- Si no hay ventas en periodo
+	IF @TotalVentasPeriodo IS NULL
+	BEGIN
+		SET @TotalVentasPeriodo=0;
+	END
+END
+GO
