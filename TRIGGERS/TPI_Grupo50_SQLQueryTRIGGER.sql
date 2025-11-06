@@ -40,3 +40,27 @@ BEGIN
     FROM
         inserted AS i;
 END
+GO
+
+
+/* ============================================================
+   TRIGGER: TR_NotificarCambioDePrecio
+   ============================================================ */
+USE BD2_TPI_GRUPO_50
+GO
+
+CREATE TRIGGER TR_NotificarCambioDePrecio
+ON Articulos 
+AFTER UPDATE
+AS
+BEGIN
+	INSERT INTO Auditoria(IdArticulo,Fecha,Mensaje)
+	SELECT
+		i.IdArticulo, 
+		GETDATE(), 
+		'El precio fue modificado de $' + CAST(d.Precio AS VARCHAR(20)) + 'a $' + CAST(i.Precio AS VARCHAR(20)) + '.'
+	FROM inserted i
+	INNER JOIN deleted d ON i.IdArticulo=d.IdArticulo
+	WHERE i.Precio != d.Precio;
+END;
+GO
