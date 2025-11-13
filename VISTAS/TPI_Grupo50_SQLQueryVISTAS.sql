@@ -78,14 +78,11 @@ SELECT
     C.NombreCategoria       AS Categoria,
     A.Descripcion,
     A.Precio,
-    I.RutaImagen            AS Foto,
     E.NombreEstado          AS Estado
 FROM
     dbo.Articulos AS A
 INNER JOIN
     dbo.Categorias AS C ON A.IdCategoria = C.IdCategoria
-INNER JOIN
-    dbo.ImagenesArticulo AS I ON A.IdArticulo = I.IdArticulo
 INNER JOIN
     dbo.EstadosArticulo AS E ON A.IdEstado = E.IdEstado
 WHERE
