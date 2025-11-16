@@ -61,7 +61,7 @@ VALUES
 ('Juego de Mesa Ajedrez', 'Ajedrez magnético plegable', 2500.00, 9, 1),
 ('Lámpara LED', 'Lámpara de escritorio LED', 650.00, 10, 1);
 
-INSERT INTO ImagenesArticulo (IdArticulo, RutaImagen)
+INSERT INTO [BD2_TPI_GRUPO_50].[dbo].[ImagenesArticulo] ([IdArticulo], [RutaImagen])
 VALUES
 (1, 'Imagenes_de_Articulos/LaptopDell.jpg'),
 (1, 'Imagenes_de_Articulos/LaptopDell2.jpg'),
@@ -76,3 +76,32 @@ VALUES
 (19, 'Imagenes_de_Articulos/TaladroBosch.jpg'),
 (19, 'Imagenes_de_Articulos/TaladroBosch2.jpg'),
 (21, 'Imagenes_de_Articulos/PalaJardin.jpg');
+
+INSERT INTO [BD2_TPI_GRUPO_50].[dbo].[Reservas] ([IDUsuario], [IDArticulo], [FechaReserva], [FechaVencimientoReserva],[MontoSeña], [EstadoReserva])
+VALUES
+(3,5,'2025-06-01','2025-06-03',2500.00,1),
+(5,4,'2025-06-15','2025-06-17',12000.00,1),
+(1,8,'2025-07-20','2025-07-22',8500.00,1),
+(8,7,'2025-08-01','2025-08-03',1900.00,1),
+(10,24,'2025-09-01','2025-09-03',250.00,1),
+(2,25,'2025-09-15','2025-09-17',65.00,1),
+(7,15,'2025-09-20','2025-09-22',2200.00,1),
+(9,20,'2025-10-11','2025-10-13',750.00,1),
+(5,16,'2025-11-01','2025-11-03',1250.00,1),
+(3,2,'2025-11-10','2025-11-12',3500.00,1),
+(4,2,'2025-10-10','2025-10-12',3500.00,0),
+(7,8,'2025-06-20','2025-06-22',8500.00,0),
+(6,5,'2025-05-01','2025-05-03',2500.00,0);
+
+INSERT INTO [BD2_TPI_GRUPO_50].[dbo].[Ventas] ([IDReserva], [FechaVenta],[PrecioFinal])
+VALUES
+(6,'2025-06-01',25000.00),
+(7,'2025-06-16',120000.00),
+(8,'2025-07-22',85000.00),
+(9,'2025-08-01',19000.00),
+(10,'2025-09-02',2500.00),
+(11,'2025-09-16',650.00),
+(12,'2025-09-20',22000.00),
+(13,'2025-10-12',7500.00),
+(14,'2025-11-02',12500.00),
+(15,'2025-11-11',35000.50);
